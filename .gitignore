@@ -1,0 +1,7 @@
+_build/
+content/
+output/
+config.toml
+!cvgen/samples/config.toml
+config.sample.toml
+__pycache__

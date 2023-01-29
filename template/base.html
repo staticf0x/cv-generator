@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1">
+    <link rel="stylesheet" href="../css/cv.css">
+    <link rel="stylesheet" href="../css/fontawesome.min.css">
+
+    <title>{{ contact.name }} CV</title>
+</head>
+<body>
+    <div class="contact">
+        <h1 class="name">{{ contact.name }}</h1>
+        <h2 class="contact-details">
+            <i class="fas fa-phone"></i> {{ contact.phone }}<br>
+            <i class="fas fa-envelope"></i> <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+            {% if cfg.address %}
+            <br><i class="fas fa-map-marker"></i> {{ contact.address }}
+            {% endif %}
+            <br><i class="fab fa-github"></i> <a href="{{ contact.github }}">{{ contact.github }}</a>
+        </h2>
+    </div>
+
+    <div class="section">
+        <h1 class="section-header"><i class="fas fa-briefcase"></i> {{ locale.work_experience }}</h1>
+
+        {% for job in jobs %}
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">
+                    {{ job.title }}
+
+                    <span class="job-location">
+                        &mdash; {{ job.company }}
+                    </span>
+                </div>
+                <div class="job-date">
+                    {{ job.years[0] }} &ndash; {{ job.years[1] }}
+                </div>
+            </div>
+
+            <ul>
+                {% for detail in job.details %}
+                <li>{{ detail }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <h1 class="section-header"><i class="fas fa-graduation-cap"></i> {{ locale.education }}</h1>
+
+        {% for edu in education %}
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title">
+                    {{ edu.title }}
+
+                    <span class="job-location">
+                        &mdash; {{ edu.location }}
+                    </span>
+                </div>
+                <div class="job-date">
+                    {{ edu.years[0] }} &ndash; {{ edu.years[1] }}
+                </div>
+            </div>
+
+            <ul>
+                {% for detail in edu.details %}
+                <li>{{ detail }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <h1 class="section-header"><i class="fas fa-laptop"></i> {{ locale.technical_skills }}</h1>
+
+        <ul>
+        {% for skill in skills_interests.technical %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1 class="section-header"><i class="fas fa-check"></i> {{ locale.other_skills }}</h1>
+
+        <ul>
+        {% for skill in skills_interests.soft %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

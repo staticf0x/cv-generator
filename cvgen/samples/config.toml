@@ -1,0 +1,8 @@
+[default]
+name = "John Doe's CV"
+lang = "en"
+jobs = ["software-dev"]
+address = true
+education = ["university"]
+key_skills = ["default"]
+skills = ["default"]
